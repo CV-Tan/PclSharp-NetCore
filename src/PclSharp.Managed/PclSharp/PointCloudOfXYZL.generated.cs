@@ -51,7 +51,9 @@ namespace PclSharp
 		[return: MarshalAs(UnmanagedType.Bool)]
 		[DllImport(Native.DllName, CallingConvention=Native.CallingConvention)]
 		public static extern bool pointcloud_xyzl_isOrganized(IntPtr ptr);
-	}
+        [DllImport(Native.DllName, CallingConvention = Native.CallingConvention)]
+        public static extern void pointcloud_xyzl_getMinMax3D(IntPtr ptr, double[] out_res);
+    }
 
 	public unsafe class PointCloudOfXYZL : PointCloud<PointXYZL>
 	{
@@ -110,7 +112,10 @@ namespace PclSharp
 		public void Downsample(int factor, PointCloud<PointXYZL> output)
 			=> Invoke.pointcloud_xyzl_downsample(_ptr, factor, output);
 
-		public override ref PointXYZL At(int col, int row)
+        public void GetMinMax3D(double[] res)
+            => Invoke.pointcloud_xyzl_getMinMax3D(_ptr, res);
+
+        public override ref PointXYZL At(int col, int row)
 			=>  ref Unsafe.AsRef<PointXYZL>(Invoke.pointcloud_xyzl_at_colrow(_ptr, col, row));
 
 		public override void Add(PointXYZL value)

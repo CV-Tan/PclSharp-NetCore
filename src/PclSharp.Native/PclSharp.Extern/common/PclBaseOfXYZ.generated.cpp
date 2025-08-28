@@ -5,7 +5,6 @@
 
 #include <pcl/pcl_base.h>
 #include <pcl/point_types.h>
-#include <pcl/common/common.h>
 
 using namespace pcl;
 using namespace std;
@@ -28,19 +27,6 @@ EXPORT(void) pclbase_xyz_setIndices(PCLBase<PointXYZ>* ptr, vector<int>* indices
 
 EXPORT(const PointXYZ*) pclbase_xyz_indexGet(PCLBase<PointXYZ>* ptr, int idx)
 { return &ptr->operator[](idx); }
-
-EXPORT(void) pclbase_xyz_getMinMax3D(PointCloud<PointXYZ>* ptr, double* out_res)
-{
-    PointXYZ minp(0, 0, 0);
-    PointXYZ maxp(0, 0, 0);
-    pcl::getMinMax3D(*ptr, minp, maxp);
-    out_res[0] = minp.x; // 最小x
-    out_res[1] = maxp.x; // 最大x
-    out_res[2] = minp.y; // 最小y
-    out_res[3] = maxp.y; // 最大y
-    out_res[4] = minp.z; // 最小z
-    out_res[5] = maxp.z; // 最大z
-}
 
 #ifdef __cplusplus  
 }

@@ -18,8 +18,6 @@ namespace PclSharp
 		[DllImport(Native.DllName, CallingConvention=Native.CallingConvention)]
 		public static extern PointXYZ* pclbase_xyz_indexGet(IntPtr ptr, int idx);
 		
-		[DllImport(Native.DllName, CallingConvention = Native.CallingConvention)]
-		public static extern void pointcloud_xyz_getMinMax3D(IntPtr ptr, double[] out_res);
 	}
 
 	public static unsafe class PclBaseOfXYZ
