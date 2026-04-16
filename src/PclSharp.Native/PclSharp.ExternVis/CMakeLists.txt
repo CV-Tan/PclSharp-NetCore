@@ -18,7 +18,6 @@ add_library(PclSharp.ExternVis SHARED
 target_include_directories(PclSharp.ExternVis PRIVATE
     ${PCL_INCLUDE_DIRS}
     ${VTK_INCLUDE_DIRS}
-    ${Boost_INCLUDE_DIRS}
 )
 
 # Link libraries
@@ -26,7 +25,6 @@ target_link_libraries(PclSharp.ExternVis PRIVATE
     PclSharp.Extern
     ${PCL_VISUALIZATION_LIBRARIES}
     ${VTK_LIBRARIES}
-    ${Boost_LIBRARIES}
 )
 
 # Set output directories
@@ -38,11 +36,6 @@ set_target_properties(PclSharp.ExternVis PROPERTIES
 
 # Windows-specific settings
 if(WIN32)
-    target_link_libraries(PclSharp.ExternVis PRIVATE
-        opengl32
-        glu32
-    )
-    
     # Add VTK module initialization for VTK 9
     vtk_module_autoinit(
         TARGETS PclSharp.ExternVis
