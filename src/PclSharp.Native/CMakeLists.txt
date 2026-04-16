@@ -12,7 +12,7 @@ endif()
 
 # Find required packages
 find_package(PCL 1.12.1 REQUIRED)
-find_package(VTK 9 REQUIRED)
+# Note: VTK is only required for PclSharp.ExternVis, it is found in that subdirectory
 # Add compile definitions from original project
 add_definitions(${PCL_DEFINITIONS})
 

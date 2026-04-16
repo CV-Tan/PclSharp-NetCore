@@ -28,7 +28,6 @@ add_library(PclSharp.Extern SHARED ${EXTERN_SOURCES})
 # ------------------------------
 target_include_directories(PclSharp.Extern PRIVATE
     ${PCL_INCLUDE_DIRS}
-    ${VTK_INCLUDE_DIRS}
     ${Boost_INCLUDE_DIRS}
 )
 
@@ -37,7 +36,6 @@ target_include_directories(PclSharp.Extern PRIVATE
 # ------------------------------
 target_link_libraries(PclSharp.Extern PRIVATE
     ${PCL_LIBRARIES}
-    ${VTK_LIBRARIES}
     ${Boost_LIBRARIES}
 )
 
@@ -50,12 +48,3 @@ set_target_properties(PclSharp.Extern PROPERTIES
     ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib"
 )
 
-# ------------------------------
-# Windows-specific: VTK 9 autoinit
-# ------------------------------
-if(WIN32)
-    vtk_module_autoinit(
-        TARGETS PclSharp.Extern
-        MODULES ${VTK_LIBRARIES}
-    )
-endif()

@@ -1,3 +1,6 @@
+# Find VTK - only needed for visualization
+find_package(VTK 9 REQUIRED)
+
 # Collect source files
 file(GLOB EXTERNVIS_SOURCES
     "*.cpp"
